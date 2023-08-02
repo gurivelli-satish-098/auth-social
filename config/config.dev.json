@@ -1,0 +1,52 @@
+{
+  "name": {
+    "type": "parameter",
+    "key": "SERVICE_NAME",
+    "value": "auth-service"
+  },
+  "db_dialect": {
+    "type": "parameter",
+    "key": "DB_DIALECT",
+    "value": ""
+  },
+  "db_port": {
+    "type": "parameter",
+    "key": "DB_PORT",
+    "value": ""
+  },
+  "db_database":{
+    "type": "parameter",
+    "key": "DB_DATABASE",
+    "value": ""
+  },
+  "db_host": {
+    "type": "parameter",
+    "key": "DB_HOST",
+    "value": ""
+  },
+  "db_user": {
+    "type": "parameter",
+    "key": "DB_USER",
+    "value": ""
+  },
+  "db_password": {
+    "type": "parameter",
+    "key": "DB_PASSWORD",
+    "value": ""
+  },
+  "db_read_host": {
+    "type": "parameter",
+    "key": "DB_READ_HOST",
+    "value": ""
+  },
+  "db_read_user": {
+    "type": "parameter",
+    "key": "DB_READ_USER",
+    "value": ""
+  },
+  "db_read_password": {
+    "type": "parameter",
+    "key": "DB_READ_PASSWORD",
+    "value": ""
+  }
+}
