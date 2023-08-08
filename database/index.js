@@ -75,6 +75,10 @@ module.exports = class DatabaseContext {
   };
 
   static connect = async () => {
+<<<<<<< HEAD
+=======
+    console.log(ConfigManager.get("DB_DIALECT"));
+>>>>>>> 5b2252cdc4e7d3058f7a51a2abb955fed5461d59
     // re-use the sequelize instance across invocations to improve performance
     if (!this._sequelize) {
       this._sequelize = await DatabaseContext.loadSequelize();
