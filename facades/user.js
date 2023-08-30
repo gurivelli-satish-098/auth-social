@@ -1,5 +1,5 @@
-class userFacade{
-    constructor(){}
+class UserFacade {
+  constructor() {}
 }
 
-module.exports = userFacade;
+module.exports = UserFacade;

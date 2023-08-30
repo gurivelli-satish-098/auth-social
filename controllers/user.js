@@ -1,7 +1,7 @@
 const ApiResponse = require("../core/lib/response");
 
-class userController {
+class UserController {
   constructor() {}
 }
 
-module.exports = userController;
+module.exports = UserController;
