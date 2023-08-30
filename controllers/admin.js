@@ -1,31 +1,32 @@
 const ApiResponse = require("../core/lib/response");
 const UserFacade = require("../facades/user");
 
-class UserController {
+class AdminController {
   constructor() {
     this.userFacade = new UserFacade();
   }
 
-  signUp = async (req, res, next) => {
+  createAdmin = async (req, res, next) => {
     try {
-      const { email, phone, countryId, userName } = req.body;
+      const { email } = req.body;
+      const userName = await this.userFacade.createUserName();
       const result = await this.userFacade.createUser(
         email,
-        phone,
-        countryId,
+        null,
+        null,
         userName,
-        "user"
+        "admin"
       );
       const response = new ApiResponse({
         success: !!result,
         data: result,
-        message: "user was successfully created.",
+        message: "Admin was successfully created.",
       });
       res.status(response.status).json(response);
     } catch (error) {
       next(error);
     }
   };
-};
+}
 
-module.exports = UserController;
+module.exports = AdminController;

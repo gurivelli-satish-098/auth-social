@@ -6,6 +6,7 @@ const { BaseError } = require("./base-error");
 class ErrorHandler {
   handleError = (err) => {
     // TODO: notify or sentry
+    console.log(err);
   };
 
   isTrustedError = (error) => {

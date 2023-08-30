@@ -19,6 +19,7 @@ app.use(
 app.use(corsMiddleware);
 app.use(cookieParser());
 app.use(bodyParser.json({ limit: "5mb" }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
 registerRoutes(app);

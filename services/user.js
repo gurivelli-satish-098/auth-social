@@ -1,6 +1,8 @@
 const DatabaseContext = require("../database");
 const { Sequelize } = require("sequelize");
 const { omitBy, isNil } = require("lodash");
+const { BaseError } = require("../core/errors/base-error");
+const { DatabaseError } = require("../core/errors/errors");
 class UserService {
   constructor() {
     this.db = DatabaseContext.db;
@@ -22,19 +24,24 @@ class UserService {
       });
       return user;
     } catch (error) {
-      throw new Error("Error in fetchUser", error);
+      throw new DatabaseError("Error in fetchUser", error);
     }
   };
 
-  createUser = async (phone, countryId, email, userName) => {
+  createUser = async (phone, countryId, email, userName, roleId) => {
     try {
-      const createArgs = omitBy({ phone, countryId, email, userName }, isNil);
-      const user = this.db.User.findOrCreate({
+      const createArgs = omitBy(
+        { phone, countryId, email, userName, roleId },
+        isNil
+      );
+      const [user, created] = await this.db.User.findOrCreate({
         where: { userName },
         defaults: createArgs,
       });
+      return user;
     } catch (error) {
-      throw new Error("Error in createUser", error);
+      if (error instanceof BaseError) throw error;
+      throw new DatabaseError("Error in createUser", error);
     }
   };
 }
