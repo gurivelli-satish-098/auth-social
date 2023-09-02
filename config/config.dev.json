@@ -4,6 +4,11 @@
     "key": "SERVICE_NAME",
     "value": "auth-service"
   },
+  "env": {
+    "type": "parameter",
+    "key": "ENV",
+    "value": "dev"
+  },
   "db_dialect": {
     "type": "parameter",
     "key": "DB_DIALECT",
