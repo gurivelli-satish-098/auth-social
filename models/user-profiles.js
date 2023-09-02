@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Profile extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,20 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.User.belongsTo(models.Role, {
-        foreignKey: "roleId",
-      });
-      models.User.hasMany(models.UserCredentail, {
+      models.Profile.belongsTo(models.User, {
         foreignKey: "userId",
-        sourceKey: "id",
-      });
-      models.User.hasOne(models.Profile, {
-        foreignKey: "userId",
-        sourceKey: "id",
       });
     }
   }
-  User.init(
+  Profile.init(
     {
       id: {
         allowNull: false,
@@ -30,39 +22,42 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      roleId: {
+      userId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: "role_id",
-      },
-      userName: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        field: "user_name",
+        field: "user_id",
         unique: true,
       },
-      email: {
-        allowNull: true,
-        type: DataTypes.STRING,
-      },
-      approvalStatus: {
+      firstName: {
         allowNull: false,
-        type: DataTypes.TINYINT,
-        defaultValue: 1,
-        field: "approval_status",
+        type: DataTypes.STRING,
+        field: "first_name",
+      },
+      lastName: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        field: "last_name",
+      },
+      bio: {
+        allowNull: true,
+        type: DataTypes.TEXT,
+      },
+      dob: {
+        allowNull: true,
+        type: DataTypes.DATE,
       },
     },
     {
       sequelize,
-      modelName: "User",
-      tableName: "users",
+      modelName: "Profile",
+      tableName: "user_profiles",
       timestamps: true,
       freezeTableName: true,
       createdAt: "created_at",
       updatedAt: "updated_at",
     }
   );
-  return User;
+  return Profile;
 };
 
 // remove name column and add active column

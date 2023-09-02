@@ -3,6 +3,7 @@ const fs = require("fs");
 class ConfigManager {
   static _configDir = null;
   static _useEnvForDebug = null;
+  static _params = {};
 
   /**
    * Initialize configuration
@@ -21,7 +22,7 @@ class ConfigManager {
   };
 
   static _loadConfig = async () => {
-    const config = ConfigManager._loadConfigDataFromFile();
+    const config = await ConfigManager._loadConfigDataFromFile();
     Object.keys(config).map((configKey) => {
       switch (config[configKey].type) {
         case "parameter":
