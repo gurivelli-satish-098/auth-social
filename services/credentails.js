@@ -23,10 +23,10 @@ class CredentailService {
           value,
         },
       });
-      // if (!created)
-      //   throw new ValidationError(
-      //     `user already have ${type}. Please try forgot ${type}`
-      //   );
+      if (!created)
+        throw new ValidationError(
+          `user already have ${type}. Please try forgot ${type}`
+        );
       return true;
     } catch (error) {
       if (error instanceof BaseError) throw error;
