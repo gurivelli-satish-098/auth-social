@@ -45,14 +45,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
         type: DataTypes.STRING,
       },
-      phone: {
-        allowNull: true,
-        type: DataTypes.INTEGER,
-      },
-      countryId: {
-        allowNull: true,
-        type: DataTypes.INTEGER,
-        field: "country_id",
+      approvalStatus: {
+        allowNull: false,
+        type: DataTypes.TINYINT,
+        defaultValue: 1,
+        field: "approval_status",
       },
     },
     {

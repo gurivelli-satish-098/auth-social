@@ -1,5 +1,5 @@
 const ApiResponse = require("../core/lib/response");
-const UserFacade = require("../facades/user");
+const UserFacade = require("../facades/users");
 
 class UserController {
   constructor() {
@@ -8,11 +8,9 @@ class UserController {
 
   signUp = async (req, res, next) => {
     try {
-      const { email, phone, countryId, userName } = req.body;
+      const { email, userName } = req.body;
       const result = await this.userFacade.createUser(
         email,
-        phone,
-        countryId,
         userName,
         "user"
       );
@@ -26,6 +24,6 @@ class UserController {
       next(error);
     }
   };
-};
+}
 
 module.exports = UserController;

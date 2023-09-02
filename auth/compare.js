@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const ConfigManager = require("../core/lib/manager");
-const compareCredential = async (type, userSecret, credentials) => {
+const compareCredential = async ({type, userSecret, credentials}) => {
   switch (type) {
     case "password":
       return await bcrypt.compare(credentials, userSecret);

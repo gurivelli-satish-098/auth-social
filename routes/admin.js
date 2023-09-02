@@ -5,6 +5,7 @@ const AdminController = require("../controllers/admin");
 const adminController = new AdminController();
 
 router.post("/create", adminController.createAdmin);
+router.post("/approve", adminController.aprroveAdmin);
 router.post("/login", (req, res)=> res.send(true));
 
 module.exports = router;

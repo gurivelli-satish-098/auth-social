@@ -48,5 +48,20 @@
     "type": "parameter",
     "key": "DB_READ_PASSWORD",
     "value": ""
+  },
+  "jwt_secret": {
+    "type": "parameter",
+    "key": "JWT_SECRET",
+    "value": ""
+  },
+  "auth_cookie_expiry": {
+    "type": "parameter",
+    "key": "AUTH_COOKIE_EXPIRY",
+    "value": "31560000000"
+  },
+  "auth_cookie_domain": {
+    "type": "parameter",
+    "key": "AUTH_COOKIE_DOMAIN",
+    "value": ".social.com"
   }
 }
