@@ -1,3 +1,4 @@
+const ConfigManager = require("../core/lib/manager");
 const ApiResponse = require("../core/lib/response");
 const UserFacade = require("../facades/users");
 
@@ -29,7 +30,7 @@ class AdminController {
       const response = new ApiResponse({
         success: !!result,
         data: result,
-        message: "Admin was successfully created.",
+        message: "Granted the access.",
       });
       res.status(response.status).json(response);
     } catch (error) {
@@ -37,14 +38,26 @@ class AdminController {
     }
   };
 
-  verifyAdmin = async (req, res, next) => {
+  masterLogin = async (req, res, next) => {
     try {
-      const { email, userName, identifierSecret } = req.body;
-      const result = await this;
+      const { adminEmail, userName, identifierSecret } = req.body;
+      const token = await this.userFacade.masterLogin(
+        adminEmail,
+        userName,
+        identifierSecret
+      );
+      res.cookie("_token", token, {
+        httpOnly: true,
+        secure: true,
+        domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
+        path: "/",
+        sameSite: "strict",
+        maxAge: parseInt(ConfigManager.get("AUTH_COOKIE_EXPIRY")),
+      });
       const response = new ApiResponse({
-        success: !!result,
-        data: result,
-        message: "Admin was successfully created.",
+        success: !!token,
+        data: null,
+        message: "successfully logged-in",
       });
       res.status(response.status).json(response);
     } catch (error) {

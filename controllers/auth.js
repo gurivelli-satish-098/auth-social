@@ -24,14 +24,31 @@ class AuthController {
         maxAge: parseInt(ConfigManager.get("AUTH_COOKIE_EXPIRY")),
       });
       const response = new ApiResponse({
-        success: !!result,
-        data: result,
-        message: "Password was successfully created.",
+        success: !!token,
+        data: null,
+        message: "successfully logged-in",
       });
       res.status(response.status).json(response);
     } catch (error) {
       next(error);
     }
+  };
+
+  logoutUser = (req, res) => {
+    let cookieName = "_token"
+    res.clearCookie(cookieName, {
+      secure: true,
+      domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
+      path: "/",
+      sameSite: "strict",
+      httpOnly: true,
+    });
+    const response = new ApiResponse({
+      success: true,
+      data: null,
+      message: "user logged out successfully",
+    });
+    res.status(response.status).json(response);
   };
 }
 

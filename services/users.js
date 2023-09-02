@@ -8,7 +8,7 @@ class UserService {
     this.db = DatabaseContext.db;
   }
 
-  fetchUser = async ({ userId, userName, email, extra }) => {
+  fetchUser = async ({ userId, userName, email, extra = {} }) => {
     try {
       let filter = omitBy(
         {
@@ -21,6 +21,7 @@ class UserService {
       const user = await this.db.User.findOne({
         where: filter,
         attributes: ["id", "roleId", "userName", "email", "approvalStatus"],
+        include: extra?.includeFilter,
       });
       return user;
     } catch (error) {
@@ -28,7 +29,7 @@ class UserService {
     }
   };
 
-  createUser = async (email, userName, roleId, approvalStatus) => {
+  createUser = async (email, userName, roleId, approvalStatus = 1) => {
     try {
       const [user, created] = await this.db.User.findOrCreate({
         where: { email },

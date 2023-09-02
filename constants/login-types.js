@@ -3,11 +3,11 @@ const LOGIN_TYPES = {
 };
 
 const loginIdTypeMap = {
-  1: "password",
+  1: "Password",
 };
 
 const loginTypeIdMap = {
-  password: 1,
+  Password: 1,
 };
 
 const loginTypeDetails = {
@@ -22,5 +22,5 @@ module.exports = {
   LOGIN_TYPES,
   loginIdTypeMap,
   loginTypeIdMap,
-  loginTypeDetails
+  loginTypeDetails,
 };

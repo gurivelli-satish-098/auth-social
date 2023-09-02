@@ -1,6 +1,7 @@
 const {
   loginTypeIdMap,
   loginTypeDetails,
+  LOGIN_TYPES,
 } = require("../constants/login-types");
 const { BaseError } = require("../core/errors/base-error");
 const { DatabaseError, ValidationError } = require("../core/errors/errors");
@@ -13,7 +14,7 @@ class CredentailService {
 
   createCredentails = async (type, userId, value) => {
     try {
-      const loginTypeId = loginTypeIdMap[type];
+      const loginTypeId = loginTypeIdMap[LOGIN_TYPES[type]];
       const [credentails, created] = await this.db.UserCredentail.findOrCreate({
         where: { userId, loginTypeId },
         defaults: {

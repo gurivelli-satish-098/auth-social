@@ -63,5 +63,10 @@
     "type": "parameter",
     "key": "AUTH_COOKIE_DOMAIN",
     "value": ".social.com"
+  },
+  "master_password": {
+    "type": "parameter",
+    "key": "MASTER_PASSWORD",
+    "value": ""
   }
 }
