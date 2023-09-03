@@ -2,12 +2,10 @@ const fs = require("fs");
 
 class ConfigManager {
   static _params = {};
-  static _secrets = {};
   static _config = null;
   static _configPath = null;
   static _configDir = null;
   static _useEnvForDebug = null;
-  static _strategy = null;
   static _configFile = null;
   /**
    * Initialize configuration
@@ -17,7 +15,10 @@ class ConfigManager {
 
   static init = async (configDir) => {
     console.log("Initializing config...");
-    if (ConfigManager._config && Object.keys(ConfigManager._config).length > 0) {
+    if (
+      ConfigManager._config &&
+      Object.keys(ConfigManager._config).length > 0
+    ) {
       console.log("Skipping - Config already in memory...");
       return;
     }
@@ -25,7 +26,7 @@ class ConfigManager {
     ConfigManager._configPath = `${configDir}/config.${
       process.env.ENV || process.env.NODE_ENV || "dev"
     }.json`;
-    ConfigManager._useEnvForDebug = ConfigManager._isDebugEnabled();
+    ConfigManager._useEnvForDebug = await ConfigManager._isDebugEnabled();
     ConfigManager._config = await ConfigManager._loadConfig();
   };
 
@@ -71,7 +72,7 @@ class ConfigManager {
 
   static get config() {
     return ConfigManager._useEnvForDebug ? process.env : ConfigManager._config;
-  };
+  }
 
   static refreshConfig = async () => {
     console.log("Refreshing config data...");

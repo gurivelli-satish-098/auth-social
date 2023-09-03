@@ -49,7 +49,7 @@ class AdminController {
       res.cookie("_token", token, {
         httpOnly: true,
         secure: true,
-        domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
+        // domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
         path: "/",
         sameSite: "strict",
         maxAge: parseInt(ConfigManager.get("AUTH_COOKIE_EXPIRY")),
