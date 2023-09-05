@@ -18,7 +18,7 @@ class AuthController {
       res.cookie("_token", token, {
         httpOnly: true,
         secure: true,
-        domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
+        // domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
         path: "/",
         sameSite: "strict",
         maxAge: parseInt(ConfigManager.get("AUTH_COOKIE_EXPIRY")),
@@ -38,7 +38,7 @@ class AuthController {
     let cookieName = "_token"
     res.clearCookie(cookieName, {
       secure: true,
-      domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
+      // domain: ConfigManager.get("AUTH_COOKIE_DOMAIN"),
       path: "/",
       sameSite: "strict",
       httpOnly: true,

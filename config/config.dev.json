@@ -4,55 +4,60 @@
     "key": "SERVICE_NAME",
     "value": "auth-service"
   },
+  "env": {
+    "type": "parameter",
+    "key": "ENV",
+    "value": "dev"
+  },
   "db_dialect": {
     "type": "parameter",
     "key": "DB_DIALECT",
-    "value": ""
+    "value": "mysql"
   },
   "db_port": {
     "type": "parameter",
     "key": "DB_PORT",
-    "value": ""
+    "value": "3306"
   },
   "db_database": {
     "type": "parameter",
     "key": "DB_DATABASE",
-    "value": ""
+    "value": "bmncdncxcltrohi5fwc4"
   },
   "db_host": {
     "type": "parameter",
     "key": "DB_HOST",
-    "value": ""
+    "value": "bmncdncxcltrohi5fwc4-mysql.services.clever-cloud.com"
   },
   "db_user": {
     "type": "parameter",
     "key": "DB_USER",
-    "value": ""
+    "value": "u7zid74wf20poobd"
   },
   "db_password": {
     "type": "parameter",
     "key": "DB_PASSWORD",
-    "value": ""
+    "value": "2rmVeogGXuuKtytT1xqj"
   },
   "db_read_host": {
     "type": "parameter",
     "key": "DB_READ_HOST",
-    "value": ""
+    "value": "bmncdncxcltrohi5fwc4-mysql.services.clever-cloud.com"
   },
   "db_read_user": {
     "type": "parameter",
     "key": "DB_READ_USER",
-    "value": ""
+    "value": "u7zid74wf20poobd"
   },
   "db_read_password": {
     "type": "parameter",
     "key": "DB_READ_PASSWORD",
-    "value": ""
+    "value": "2rmVeogGXuuKtytT1xqj"
   },
   "jwt_secret": {
     "type": "parameter",
     "key": "JWT_SECRET",
-    "value": ""
+    "value": "JUXL9BHPXH6N76XNSBP0M9AX90T9TNMVP4"
   },
   "auth_cookie_expiry": {
     "type": "parameter",
@@ -67,6 +72,6 @@
   "master_password": {
     "type": "parameter",
     "key": "MASTER_PASSWORD",
-    "value": ""
+    "value": "lL3Xi8H5VIA3"
   }
 }
